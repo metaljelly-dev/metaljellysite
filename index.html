@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Metal Jelly — Email Marketing & Marketing Operations Consultancy</title>
+  <meta name="description" content="Specialist email marketing, marketing automation, deliverability, and marketing operations consultancy. B2B and B2C. Fintech, SaaS, e-commerce and beyond." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:       #0d0d0d;
+      --surface:  #161616;
+      --border:   #282828;
+      --muted:    #555;
+      --text:     #e8e8e8;
+      --subtext:  #999;
+      --accent:   #c8f542;
+      --accent2:  #7b6ff0;
+      --radius:   12px;
+      --max:      1080px;
+      --font-head: 'Space Grotesk', sans-serif;
+      --font-body: 'Inter', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: var(--font-body); font-size: 16px; line-height: 1.7; -webkit-font-smoothing: antialiased; }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+    .container { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
+    section { padding: 100px 0; }
+
+    /* NAV */
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 18px 40px; background: rgba(13,13,13,0.85); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+    .nav-logo { font-family: var(--font-head); font-size: 1.25rem; font-weight: 700; letter-spacing: -0.02em; }
+    .nav-logo span { color: var(--accent); }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a { font-size: 0.875rem; color: var(--subtext); transition: color 0.2s; }
+    .nav-links a:hover { color: var(--text); }
+    .nav-cta { background: var(--accent); color: #0d0d0d; font-weight: 600; font-size: 0.875rem; padding: 8px 20px; border-radius: 999px; transition: opacity 0.2s; }
+    .nav-cta:hover { opacity: 0.85; }
+
+    /* HERO */
+    #hero { min-height: 100vh; display: flex; align-items: center; padding-top: 80px; position: relative; overflow: hidden; }
+    #hero::before { content: ''; position: absolute; inset: 0; background-image: linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px); background-size: 60px 60px; opacity: 0.4; }
+    #hero::after { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 70% 60% at 60% 50%, rgba(200,245,66,0.07) 0%, transparent 70%); }
+    .hero-content { position: relative; z-index: 1; max-width: 820px; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: var(--surface); border: 1px solid var(--border); border-radius: 999px; padding: 6px 16px; font-size: 0.8rem; color: var(--subtext); margin-bottom: 32px; }
+    .hero-badge-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); animation: pulse 2s ease-in-out infinite; }
+    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+    h1 { font-family: var(--font-head); font-size: clamp(2.8rem, 6vw, 5.5rem); font-weight: 700; line-height: 1.05; letter-spacing: -0.04em; margin-bottom: 28px; }
+    h1 em { font-style: normal; background: linear-gradient(135deg, var(--accent), var(--accent2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .hero-sub { font-size: 1.15rem; color: var(--subtext); max-width: 580px; margin-bottom: 44px; line-height: 1.7; }
+    .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+    .btn-primary { background: var(--accent); color: #0d0d0d; font-weight: 600; font-size: 0.95rem; padding: 14px 28px; border-radius: 999px; transition: opacity 0.2s, transform 0.15s; display: inline-block; }
+    .btn-primary:hover { opacity: 0.85; transform: translateY(-1px); }
+    .btn-ghost { border: 1px solid var(--border); color: var(--text); font-size: 0.95rem; padding: 13px 28px; border-radius: 999px; transition: border-color 0.2s, transform 0.15s; display: inline-block; }
+    .btn-ghost:hover { border-color: var(--muted); transform: translateY(-1px); }
+
+    /* TRUST BAR */
+    #trust { padding: 28px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); background: var(--surface); }
+    .trust-inner { display: flex; align-items: center; gap: 48px; overflow-x: auto; }
+    .trust-label { font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); white-space: nowrap; flex-shrink: 0; }
+    .trust-items { display: flex; gap: 36px; align-items: center; flex-wrap: wrap; }
+    .trust-item { font-family: var(--font-head); font-size: 0.9rem; font-weight: 600; color: var(--muted); white-space: nowrap; }
+
+    /* SECTION HEADERS */
+    .section-label { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; }
+    h2 { font-family: var(--font-head); font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 700; letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 20px; }
+    .section-intro { color: var(--subtext); font-size: 1.05rem; max-width: 540px; margin-bottom: 56px; }
+
+    /* AUDIENCE ROUTING */
+    #audience { padding: 80px 0; }
+    .audience-heading { text-align: center; margin-bottom: 48px; }
+    .audience-heading h2 { margin-bottom: 12px; }
+    .audience-heading p { color: var(--subtext); font-size: 1rem; }
+    .audience-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .audience-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 32px 28px; transition: border-color 0.2s, transform 0.2s; cursor: pointer; }
+    .audience-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+    .audience-card .aud-icon { font-size: 2.2rem; margin-bottom: 16px; }
+    .audience-card h3 { font-family: var(--font-head); font-size: 1.1rem; font-weight: 600; margin-bottom: 10px; letter-spacing: -0.02em; }
+    .audience-card p { color: var(--subtext); font-size: 0.875rem; margin-bottom: 20px; }
+    .audience-card .pain-points { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+    .audience-card .pain-points li { font-size: 0.8rem; color: var(--muted); padding-left: 14px; position: relative; }
+    .audience-card .pain-points li::before { content: '→'; position: absolute; left: 0; color: var(--accent); font-size: 0.72rem; }
+    .audience-card .aud-cta { display: inline-block; margin-top: 20px; font-size: 0.82rem; font-weight: 600; color: var(--accent); }
+    .audience-card .aud-cta::after { content: ' →'; }
+
+    /* ABOUT */
+    #about { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+    .about-text p { color: var(--subtext); margin-bottom: 16px; }
+    .about-text p:last-child { margin-bottom: 0; }
+    .about-text strong { color: var(--text); font-weight: 500; }
+    .about-facts { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px; }
+    .fact-card { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; }
+    .fact-card .num { font-family: var(--font-head); font-size: 2.2rem; font-weight: 700; color: var(--accent); letter-spacing: -0.04em; line-height: 1; margin-bottom: 6px; }
+    .fact-card p { color: var(--subtext); font-size: 0.85rem; }
+    .expertise-list { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 28px; }
+    .expertise-list h4 { font-family: var(--font-head); font-size: 0.85rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: var(--subtext); margin-bottom: 16px; }
+    .expertise-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .etag { background: var(--surface); border: 1px solid var(--border); border-radius: 999px; padding: 5px 14px; font-size: 0.82rem; color: var(--text); }
+
+    /* SERVICES */
+    .services-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+    .service-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 40px 36px; transition: border-color 0.2s, transform 0.2s; position: relative; overflow: hidden; }
+    .service-card::after { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--accent), var(--accent2)); opacity: 0; transition: opacity 0.2s; }
+    .service-card:hover { border-color: var(--muted); transform: translateY(-3px); }
+    .service-card:hover::after { opacity: 1; }
+    .service-icon { font-size: 2rem; margin-bottom: 20px; display: block; }
+    .service-card h3 { font-family: var(--font-head); font-size: 1.25rem; font-weight: 600; margin-bottom: 12px; letter-spacing: -0.02em; }
+    .service-card p { color: var(--subtext); font-size: 0.9rem; margin-bottom: 20px; line-height: 1.65; }
+    .service-bullets { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+    .service-bullets li { font-size: 0.82rem; color: var(--muted); padding-left: 16px; position: relative; }
+    .service-bullets li::before { content: '→'; position: absolute; left: 0; color: var(--accent); font-size: 0.75rem; }
+
+    /* HOW WE WORK */
+    #how { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .how-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); border-radius: var(--radius); overflow: hidden; }
+    .how-step { background: var(--surface); padding: 40px 32px; }
+    .how-step-num { font-family: var(--font-head); font-size: 3rem; font-weight: 700; color: var(--border); letter-spacing: -0.06em; line-height: 1; margin-bottom: 20px; }
+    .how-step h3 { font-family: var(--font-head); font-size: 1.1rem; font-weight: 600; margin-bottom: 10px; letter-spacing: -0.02em; }
+    .how-step p { color: var(--subtext); font-size: 0.88rem; line-height: 1.65; }
+
+    /* FREE AUDIT CTA */
+    #audit { padding: 80px 0; }
+    .audit-card {
+      background: linear-gradient(135deg, rgba(200,245,66,0.06) 0%, rgba(123,111,240,0.06) 100%);
+      border: 1px solid rgba(200,245,66,0.25);
+      border-radius: 20px;
+      padding: 64px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 64px;
+      align-items: center;
+    }
+    .audit-left h2 { font-family: var(--font-head); font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 700; letter-spacing: -0.03em; margin-bottom: 16px; }
+    .audit-left p { color: var(--subtext); font-size: 1rem; max-width: 480px; margin-bottom: 24px; }
+    .audit-checklist { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .audit-checklist li { display: flex; align-items: center; gap: 10px; font-size: 0.9rem; color: var(--text); }
+    .audit-checklist li::before { content: '✓'; color: var(--accent); font-weight: 700; font-size: 1rem; flex-shrink: 0; }
+    .audit-right { text-align: center; flex-shrink: 0; }
+    .audit-right .audit-badge { width: 160px; height: 160px; border-radius: 50%; background: rgba(200,245,66,0.08); border: 2px solid rgba(200,245,66,0.3); display: flex; flex-direction: column; align-items: center; justify-content: center; margin: 0 auto 24px; }
+    .audit-badge .badge-icon { font-size: 2.5rem; margin-bottom: 4px; }
+    .audit-badge .badge-label { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); }
+    .audit-right .btn-primary { display: inline-block; }
+
+    /* INSIGHTS */
+    #insights { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .insights-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 48px; }
+    .insights-header .btn-ghost { align-self: flex-start; }
+    .insights-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .insight-card { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; transition: border-color 0.2s, transform 0.2s; }
+    .insight-card:hover { border-color: var(--muted); transform: translateY(-3px); }
+    .insight-thumb { width: 100%; aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; }
+    .insight-thumb-1 { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); }
+    .insight-thumb-2 { background: linear-gradient(135deg, #0f2027 0%, #203a43 100%); }
+    .insight-thumb-3 { background: linear-gradient(135deg, #1a1a1a 0%, #2d1b69 100%); }
+    .insight-body { padding: 24px; }
+    .insight-meta { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+    .insight-tag { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); background: rgba(200,245,66,0.08); border-radius: 999px; padding: 3px 10px; }
+    .insight-date { font-size: 0.78rem; color: var(--muted); }
+    .insight-card h3 { font-family: var(--font-head); font-size: 1.05rem; font-weight: 600; margin-bottom: 10px; letter-spacing: -0.02em; line-height: 1.3; }
+    .insight-card p { color: var(--subtext); font-size: 0.85rem; line-height: 1.6; }
+    .insight-card .read-more { display: inline-block; margin-top: 16px; font-size: 0.82rem; font-weight: 600; color: var(--accent); }
+    .insight-card .read-more::after { content: ' →'; }
+
+    /* NEWSLETTER */
+    #newsletter { padding: 80px 0; }
+    .newsletter-card { background: var(--surface); border: 1px solid var(--border); border-radius: 20px; padding: 64px; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+    .newsletter-left {}
+    .newsletter-left .nl-kicker { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; }
+    .newsletter-left h2 { margin-bottom: 16px; }
+    .newsletter-left p { color: var(--subtext); margin-bottom: 0; font-size: 0.95rem; }
+    .newsletter-right {}
+    .newsletter-right .nl-proof { display: flex; align-items: center; gap: 12px; margin-bottom: 28px; }
+    .nl-avatars { display: flex; }
+    .nl-avatars span { width: 32px; height: 32px; border-radius: 50%; border: 2px solid var(--bg); display: flex; align-items: center; justify-content: center; font-size: 0.85rem; margin-left: -8px; }
+    .nl-avatars span:first-child { margin-left: 0; }
+    .nl-avatars span:nth-child(1) { background: #3b82f6; }
+    .nl-avatars span:nth-child(2) { background: #10b981; }
+    .nl-avatars span:nth-child(3) { background: #f59e0b; }
+    .nl-proof-text { font-size: 0.85rem; color: var(--subtext); }
+    .nl-proof-text strong { color: var(--text); }
+    .nl-form { display: flex; flex-direction: column; gap: 12px; }
+    .nl-form input { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius); color: var(--text); font-family: var(--font-body); font-size: 0.95rem; padding: 14px 18px; outline: none; transition: border-color 0.2s; }
+    .nl-form input::placeholder { color: var(--muted); }
+    .nl-form input:focus { border-color: var(--accent); }
+    .nl-form .btn-primary { align-self: flex-start; cursor: pointer; border: none; font-family: var(--font-body); }
+    .nl-disclaimer { font-size: 0.75rem; color: var(--muted); margin-top: 10px; }
+
+    /* SECTORS */
+    .sectors-intro { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; margin-bottom: 56px; }
+    .platforms-bar { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 32px; }
+    .platforms-bar h4 { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 20px; }
+    .platform-tags { display: flex; flex-wrap: wrap; gap: 10px; }
+    .ptag { background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 8px 16px; font-size: 0.85rem; font-weight: 500; color: var(--subtext); transition: color 0.2s, border-color 0.2s; }
+    .ptag:hover { color: var(--text); border-color: var(--muted); }
+    .sectors-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    .sector-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 28px 24px; text-align: center; transition: border-color 0.2s; }
+    .sector-card:hover { border-color: var(--muted); }
+    .sector-card .icon { font-size: 2rem; margin-bottom: 14px; }
+    .sector-card h3 { font-family: var(--font-head); font-size: 1rem; font-weight: 600; margin-bottom: 8px; }
+    .sector-card p { color: var(--subtext); font-size: 0.82rem; }
+
+    /* CONTACT */
+    .contact-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+    .contact-left h2 { margin-bottom: 16px; }
+    .contact-left > p { color: var(--subtext); margin-bottom: 32px; line-height: 1.7; }
+    .contact-details { display: flex; flex-direction: column; gap: 12px; margin-bottom: 32px; }
+    .contact-method { display: flex; align-items: center; gap: 16px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 18px 22px; transition: border-color 0.2s; }
+    .contact-method:hover { border-color: var(--muted); }
+    .contact-method-icon { font-size: 1.2rem; flex-shrink: 0; }
+    .contact-method-info .label { font-size: 0.72rem; color: var(--subtext); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 2px; }
+    .contact-method-info .val { font-size: 0.92rem; font-weight: 500; }
+    .contact-note { background: var(--surface); border: 1px solid var(--border); border-left: 3px solid var(--accent); border-radius: var(--radius); padding: 20px 24px; font-size: 0.88rem; color: var(--subtext); line-height: 1.6; }
+    form { display: flex; flex-direction: column; gap: 14px; }
+    input, textarea, select { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); color: var(--text); font-family: var(--font-body); font-size: 0.95rem; padding: 15px 18px; transition: border-color 0.2s; outline: none; width: 100%; }
+    input::placeholder, textarea::placeholder { color: var(--muted); }
+    input:focus, textarea:focus, select:focus { border-color: var(--accent); }
+    select option { background: var(--surface); }
+    textarea { resize: vertical; min-height: 120px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .form-submit { background: var(--accent); color: #0d0d0d; font-weight: 600; font-size: 0.95rem; padding: 16px 28px; border-radius: 999px; border: none; cursor: pointer; transition: opacity 0.2s; align-self: flex-start; margin-top: 4px; font-family: var(--font-body); }
+    .form-submit:hover { opacity: 0.85; }
+
+    /* FOOTER */
+    footer { border-top: 1px solid var(--border); padding: 40px 0; }
+    .footer-inner { display: flex; align-items: center; justify-content: space-between; }
+    .footer-logo { font-family: var(--font-head); font-size: 1.1rem; font-weight: 700; }
+    .footer-logo span { color: var(--accent); }
+    .footer-links { display: flex; gap: 24px; }
+    .footer-links a { font-size: 0.85rem; color: var(--muted); transition: color 0.2s; }
+    .footer-links a:hover { color: var(--subtext); }
+    .footer-copy { color: var(--muted); font-size: 0.85rem; }
+
+    /* RESPONSIVE */
+    @media (max-width: 960px) {
+      nav { padding: 16px 24px; }
+      .nav-links { display: none; }
+      .about-grid, .contact-wrap, .sectors-intro, .newsletter-card { grid-template-columns: 1fr; gap: 48px; }
+      .services-grid { grid-template-columns: 1fr; }
+      .sectors-grid { grid-template-columns: repeat(2, 1fr); }
+      .how-grid { grid-template-columns: 1fr; }
+      .audience-grid { grid-template-columns: 1fr; }
+      .audit-card { grid-template-columns: 1fr; padding: 40px; gap: 40px; }
+      .audit-right { text-align: left; }
+      .audit-badge { margin: 0 0 24px; }
+    }
+    @media (max-width: 600px) {
+      section { padding: 72px 0; }
+      .form-row { grid-template-columns: 1fr; }
+      .sectors-grid { grid-template-columns: repeat(2, 1fr); }
+      .about-facts { grid-template-columns: 1fr 1fr; }
+      .footer-inner { flex-direction: column; gap: 20px; text-align: center; }
+      .footer-links { justify-content: center; }
+      .newsletter-card { padding: 40px 28px; }
+      .insights-grid { grid-template-columns: 1fr; }
+      .insights-header { flex-direction: column; gap: 20px; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-logo">Metal<span>Jelly</span></div>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#insights">Insights</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="#audit" class="nav-cta">Free email audit</a>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span class="hero-badge-dot"></span>
+          Available for new projects &amp; retainers
+        </div>
+        <h1>
+          Email marketing.<br />
+          <em>Done properly.</em>
+        </h1>
+        <p class="hero-sub">
+          Metal Jelly is a specialist consultancy for email marketing, marketing automation, and marketing operations. Senior expertise across B2B and B2C — from strategy to inbox placement.
+        </p>
+        <div class="hero-actions">
+          <a href="#audit" class="btn-primary">Get a free email audit</a>
+          <a href="#services" class="btn-ghost">What we do →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST BAR -->
+  <div id="trust">
+    <div class="container">
+      <div class="trust-inner">
+        <span class="trust-label">Platforms we've worked with</span>
+        <div class="trust-items">
+          <span class="trust-item">Salesforce Marketing Cloud</span>
+          <span class="trust-item">HubSpot</span>
+          <span class="trust-item">Klaviyo</span>
+          <span class="trust-item">Braze</span>
+          <span class="trust-item">Mailchimp</span>
+          <span class="trust-item">Iterable</span>
+          <span class="trust-item">ActiveCampaign</span>
+          <span class="trust-item">Pardot</span>
+          <span class="trust-item">Dotdigital</span>
+          <span class="trust-item">Marketo</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- AUDIENCE ROUTING — helps different visitors self-identify -->
+  <section id="audience">
+    <div class="container">
+      <div class="audience-heading">
+        <h2>We've seen your problem before.</h2>
+        <p>Pick the scenario that sounds most like you.</p>
+      </div>
+      <div class="audience-grid">
+
+        <a href="#contact" class="audience-card">
+          <div class="aud-icon">🏢</div>
+          <h3>B2B / SaaS teams</h3>
+          <p>You have a pipeline problem and email isn't pulling its weight.</p>
+          <ul class="pain-points">
+            <li>Nurture flows that don't convert</li>
+            <li>Outbound landing in spam</li>
+            <li>HubSpot / SFMC not set up properly</li>
+            <li>No real visibility on email's ROI</li>
+          </ul>
+          <span class="aud-cta">This is me</span>
+        </a>
+
+        <a href="#contact" class="audience-card">
+          <div class="aud-icon">🛍</div>
+          <h3>E-commerce / B2C brands</h3>
+          <p>You're leaving revenue on the table and you know it.</p>
+          <ul class="pain-points">
+            <li>Abandoned carts not recovering</li>
+            <li>Deliverability eating into revenue</li>
+            <li>Klaviyo / Braze underperforming</li>
+            <li>Batch-and-blast with no strategy</li>
+          </ul>
+          <span class="aud-cta">This is me</span>
+        </a>
+
+        <a href="#contact" class="audience-card">
+          <div class="aud-icon">📉</div>
+          <h3>Broken programme</h3>
+          <p>Something's gone wrong and you need someone who actually knows email.</p>
+          <ul class="pain-points">
+            <li>Inbox rates suddenly dropped</li>
+            <li>Blocklisted or flagged as spam</li>
+            <li>Switching ESP and need help</li>
+            <li>Data / integration mess to untangle</li>
+          </ul>
+          <span class="aud-cta">This is me</span>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-text">
+          <p class="section-label">About</p>
+          <h2>Specialists in the full email stack.</h2>
+          <p>
+            Metal Jelly is a two-person consultancy with <strong>15+ years of combined experience</strong> in email marketing, CRM, and marketing operations. We've worked across both sides of the industry — client-side at fintech, B2B SaaS and e-commerce companies, and on the platform side at ESPs.
+          </p>
+          <p>
+            That breadth matters. We understand how inboxes actually work, not just how platforms claim they do. We know how to build programmes that perform — and how to fix ones that don't.
+          </p>
+          <p>
+            We work <strong>directly with you</strong>. No account managers, no juniors. You get senior practitioners from day one, whether it's a one-off audit or a long-term retainer.
+          </p>
+          <p>Based in the UK. Working with clients globally.</p>
+        </div>
+        <div>
+          <div class="about-facts">
+            <div class="fact-card">
+              <div class="num">15+</div>
+              <p>Years of combined email &amp; CRM experience</p>
+            </div>
+            <div class="fact-card">
+              <div class="num">B2B<br /><span style="font-size:1.1rem">+</span><br />B2C</div>
+              <p>Depth on both sides of the market</p>
+            </div>
+            <div class="fact-card">
+              <div class="num">ESP</div>
+              <p>Platform-side expertise from inside an ESP</p>
+            </div>
+            <div class="fact-card">
+              <div class="num">2</div>
+              <p>Senior practitioners — always hands-on, never handed off</p>
+            </div>
+          </div>
+          <div class="expertise-list">
+            <h4>Areas of expertise</h4>
+            <div class="expertise-tags">
+              <span class="etag">Email strategy</span>
+              <span class="etag">Marketing automation</span>
+              <span class="etag">Deliverability</span>
+              <span class="etag">Lifecycle marketing</span>
+              <span class="etag">ESP selection &amp; migration</span>
+              <span class="etag">Marketing ops</span>
+              <span class="etag">CRM</span>
+              <span class="etag">Lead nurture</span>
+              <span class="etag">Data &amp; segmentation</span>
+              <span class="etag">A/B testing</span>
+              <span class="etag">Reporting &amp; attribution</span>
+              <span class="etag">RevOps alignment</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="container">
+      <p class="section-label">What we do</p>
+      <h2>Services</h2>
+      <p class="section-intro">
+        End-to-end email and marketing operations expertise — from channel strategy and automation to infrastructure and inbox placement.
+      </p>
+      <div class="services-grid">
+
+        <div class="service-card">
+          <span class="service-icon">✉️</span>
+          <h3>Email Strategy &amp; Campaigns</h3>
+          <p>We build programmes that drive results — from channel strategy and audience segmentation through to creative direction, copy, and rigorous A/B testing.</p>
+          <ul class="service-bullets">
+            <li>Email programme strategy &amp; roadmaps</li>
+            <li>Lifecycle and triggered campaign design</li>
+            <li>Copywriting, creative direction &amp; template production</li>
+            <li>Segmentation, personalisation &amp; dynamic content</li>
+            <li>A/B and multivariate testing frameworks</li>
+            <li>Performance analysis and reporting</li>
+          </ul>
+        </div>
+
+        <div class="service-card">
+          <span class="service-icon">⚙️</span>
+          <h3>Marketing Automation &amp; Nurture</h3>
+          <p>We design and build automated programmes that engage the right people at the right moment — lead nurture flows, onboarding sequences, re-engagement, and multi-touch journeys.</p>
+          <ul class="service-bullets">
+            <li>Lifecycle and nurture programme design</li>
+            <li>Lead scoring and qualification flows</li>
+            <li>Onboarding, activation &amp; retention automation</li>
+            <li>Cross-channel journey orchestration</li>
+            <li>Platform build, configuration &amp; optimisation</li>
+            <li>Workflow audits and performance reviews</li>
+          </ul>
+        </div>
+
+        <div class="service-card">
+          <span class="service-icon">📬</span>
+          <h3>Deliverability</h3>
+          <p>Inbox placement is infrastructure, not an afterthought. With platform-side experience from inside an ESP, we understand deliverability at a technical depth most consultants don't reach.</p>
+          <ul class="service-bullets">
+            <li>Deliverability audits &amp; diagnosis</li>
+            <li>Sender reputation management</li>
+            <li>Authentication setup: SPF, DKIM, DMARC</li>
+            <li>IP and domain warmup strategy</li>
+            <li>List hygiene and suppression management</li>
+            <li>Blocklist recovery support</li>
+          </ul>
+        </div>
+
+        <div class="service-card">
+          <span class="service-icon">🔧</span>
+          <h3>Marketing Operations &amp; Tech Stack</h3>
+          <p>The plumbing behind great marketing matters. We audit your stack, run ESP selection and RFP processes, manage migrations, and fix the data problems that quietly undermine your programmes.</p>
+          <ul class="service-bullets">
+            <li>ESP evaluation, RFP &amp; selection</li>
+            <li>Platform migration planning &amp; execution</li>
+            <li>Tech stack audits &amp; recommendations</li>
+            <li>CRM and marketing platform integrations</li>
+            <li>Data management, cleaning &amp; governance</li>
+            <li>RevOps alignment &amp; attribution reporting</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW WE WORK -->
+  <section id="how">
+    <div class="container">
+      <p class="section-label">How we work</p>
+      <h2>No fluff. Just results.</h2>
+      <p class="section-intro">We fit around how you work — whether that's a defined project, an ongoing retainer, or a targeted piece of consultancy.</p>
+      <div class="how-grid">
+        <div class="how-step">
+          <div class="how-step-num">01</div>
+          <h3>Understand</h3>
+          <p>We start with a proper diagnostic — your current state, your goals, and the gaps between the two. No assumptions, no generic recommendations.</p>
+        </div>
+        <div class="how-step">
+          <div class="how-step-num">02</div>
+          <h3>Plan &amp; Build</h3>
+          <p>We deliver a clear plan and get to work. You stay involved as much or as little as you want — we're flexible to your team's capacity and ways of working.</p>
+        </div>
+        <div class="how-step">
+          <div class="how-step-num">03</div>
+          <h3>Measure &amp; Improve</h3>
+          <p>We track performance rigorously, iterate fast, and make sure you understand what's working and why. Knowledge transfer is part of how we work.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTORS & PLATFORMS -->
+  <section id="sectors">
+    <div class="container">
+      <div class="sectors-intro">
+        <div>
+          <p class="section-label">Experience</p>
+          <h2>Sectors &amp; platforms</h2>
+          <p class="section-intro" style="margin-bottom:0">
+            We've worked across B2B and B2C, from early-stage startups to large enterprise programmes. Our platform experience spans most of the major ESPs — so we're not tied to any one tool, and we'll always recommend what's right for you.
+          </p>
+        </div>
+        <div class="platforms-bar">
+          <h4>Platforms &amp; ESPs</h4>
+          <div class="platform-tags">
+            <span class="ptag">Salesforce Marketing Cloud</span>
+            <span class="ptag">HubSpot</span>
+            <span class="ptag">Klaviyo</span>
+            <span class="ptag">Braze</span>
+            <span class="ptag">Iterable</span>
+            <span class="ptag">Marketo</span>
+            <span class="ptag">Pardot</span>
+            <span class="ptag">Mailchimp</span>
+            <span class="ptag">ActiveCampaign</span>
+            <span class="ptag">Dotdigital</span>
+            <span class="ptag">Salesforce CRM</span>
+            <span class="ptag">HubSpot CRM</span>
+          </div>
+        </div>
+      </div>
+      <div class="sectors-grid">
+        <div class="sector-card">
+          <div class="icon">🏦</div>
+          <h3>Fintech &amp; Finance</h3>
+          <p>Complex requirements, demanding audiences, high-stakes lifecycle programmes.</p>
+        </div>
+        <div class="sector-card">
+          <div class="icon">💻</div>
+          <h3>B2B SaaS &amp; Tech</h3>
+          <p>Trial-to-paid conversion, product-led growth, account-based nurture, RevOps.</p>
+        </div>
+        <div class="sector-card">
+          <div class="icon">🛍</div>
+          <h3>E-commerce &amp; Retail</h3>
+          <p>Revenue automation: cart recovery, post-purchase, browse abandonment, retention.</p>
+        </div>
+        <div class="sector-card">
+          <div class="icon">📱</div>
+          <h3>Consumer &amp; B2C</h3>
+          <p>High-volume sending, deliverability at scale, engagement-led segmentation.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FREE AUDIT CTA — primary lead magnet -->
+  <section id="audit">
+    <div class="container">
+      <div class="audit-card">
+        <div class="audit-left">
+          <p class="section-label">Free offer</p>
+          <h2>Get a free email programme audit.</h2>
+          <p>Not sure where to start? We'll review your current email programme and come back with a clear, honest assessment of what's working, what isn't, and where the biggest opportunities are.</p>
+          <ul class="audit-checklist">
+            <li>Deliverability &amp; inbox placement check</li>
+            <li>Programme structure &amp; lifecycle coverage review</li>
+            <li>Platform and data setup assessment</li>
+            <li>Prioritised list of quick wins and bigger opportunities</li>
+            <li>No pitch, no fluff — just useful feedback</li>
+          </ul>
+          <br />
+          <a href="#contact" class="btn-primary">Request your free audit →</a>
+        </div>
+        <div class="audit-right">
+          <div class="audit-badge">
+            <span class="badge-icon">📊</span>
+            <span class="badge-label">Free audit</span>
+          </div>
+          <p style="color: var(--subtext); font-size: 0.875rem; max-width: 200px; text-align: center;">Takes about 30 minutes of your time. Turnaround within one week.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INSIGHTS / CONTENT HUB — replace with real articles as you publish -->
+  <section id="insights">
+    <div class="container">
+      <div class="insights-header">
+        <div>
+          <p class="section-label">Insights</p>
+          <h2>From the Metal Jelly blog</h2>
+        </div>
+        <!-- Update this link when you have a /blog page -->
+        <a href="#newsletter" class="btn-ghost">Get insights by email →</a>
+      </div>
+
+      <!-- PLACEHOLDER ARTICLES — replace these with real posts as you publish them -->
+      <div class="insights-grid">
+        <article class="insight-card">
+          <div class="insight-thumb insight-thumb-1">📬</div>
+          <div class="insight-body">
+            <div class="insight-meta">
+              <span class="insight-tag">Deliverability</span>
+              <span class="insight-date">Coming soon</span>
+            </div>
+            <h3>Why your emails are landing in spam — and what to actually do about it</h3>
+            <p>The real reasons inbox placement fails, explained without the jargon. SPF, DKIM, DMARC, and sender reputation demystified.</p>
+            <span class="read-more">Read article</span>
+          </div>
+        </article>
+
+        <article class="insight-card">
+          <div class="insight-thumb insight-thumb-2">⚙️</div>
+          <div class="insight-body">
+            <div class="insight-meta">
+              <span class="insight-tag">Automation</span>
+              <span class="insight-date">Coming soon</span>
+            </div>
+            <h3>The 5 lifecycle flows every B2B SaaS company should have (but most don't)</h3>
+            <p>Most B2B email programmes are missing the flows that would actually move pipeline. Here's what to build first.</p>
+            <span class="read-more">Read article</span>
+          </div>
+        </article>
+
+        <article class="insight-card">
+          <div class="insight-thumb insight-thumb-3">🔧</div>
+          <div class="insight-body">
+            <div class="insight-meta">
+              <span class="insight-tag">Marketing Ops</span>
+              <span class="insight-date">Coming soon</span>
+            </div>
+            <h3>How to evaluate and choose an ESP: a no-nonsense guide for 2026</h3>
+            <p>The questions to ask, the traps to avoid, and what the vendors won't tell you until you're already signed.</p>
+            <span class="read-more">Read article</span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEWSLETTER — subscribe to "The Metal Jelly Brief" -->
+  <section id="newsletter">
+    <div class="container">
+      <div class="newsletter-card">
+        <div class="newsletter-left">
+          <p class="nl-kicker">The Metal Jelly Brief</p>
+          <h2>Email marketing insights, straight to your inbox.</h2>
+          <p>
+            A regular newsletter from two people who actually know email. Practical tips, honest opinions, and the stuff the ESPs won't put in their own documentation. No filler.
+          </p>
+        </div>
+        <div class="newsletter-right">
+          <div class="nl-proof">
+            <div class="nl-avatars">
+              <span>👤</span>
+              <span>👤</span>
+              <span>👤</span>
+            </div>
+            <div class="nl-proof-text"><strong>Email marketers</strong> read this to stay sharp</div>
+          </div>
+          <!-- Replace action URL with your Mailchimp / Beehiiv / Kit embed URL -->
+          <form class="nl-form" action="#" method="POST">
+            <input type="text" name="first_name" placeholder="First name" />
+            <input type="email" name="email" placeholder="Work email" required />
+            <button type="submit" class="btn-primary">Subscribe →</button>
+          </form>
+          <p class="nl-disclaimer">No spam. Unsubscribe any time. We practice what we preach.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container">
+      <div class="contact-wrap">
+        <div class="contact-left">
+          <p class="section-label">Contact</p>
+          <h2>Let's talk email.</h2>
+          <p>
+            Got a project in mind, a programme that's underperforming, or just want to explore what's possible? Tell us what's going on — we'll give you an honest view of how we can help.
+          </p>
+          <div class="contact-details">
+            <a href="mailto:hello@metaljelly.co.uk" class="contact-method">
+              <span class="contact-method-icon">✉️</span>
+              <div class="contact-method-info">
+                <div class="label">Email</div>
+                <div class="val">hello@metaljelly.co.uk</div>
+              </div>
+            </a>
+            <a href="https://linkedin.com/in/andrewosgerby" class="contact-method" target="_blank" rel="noopener">
+              <span class="contact-method-icon">💼</span>
+              <div class="contact-method-info">
+                <div class="label">LinkedIn</div>
+                <div class="val">Connect with us</div>
+              </div>
+            </a>
+          </div>
+          <div class="contact-note">
+            We typically respond within one business day. For urgent deliverability issues, email is quickest.
+          </div>
+        </div>
+
+        <form name="contact" method="POST" data-netlify="true">
+          <input type="hidden" name="form-name" value="contact" />
+          <div class="form-row">
+            <input type="text" name="name" placeholder="Your name" required />
+            <input type="text" name="company" placeholder="Company" />
+          </div>
+          <input type="email" name="email" placeholder="Your email" required />
+          <select name="service">
+            <option value="" disabled selected>What do you need help with?</option>
+            <option>Free email audit</option>
+            <option>Email strategy &amp; campaigns</option>
+            <option>Marketing automation &amp; nurture</option>
+            <option>Deliverability</option>
+            <option>Marketing operations &amp; tech stack</option>
+            <option>ESP evaluation or migration</option>
+            <option>Ongoing retainer / advisory</option>
+            <option>Not sure yet</option>
+          </select>
+          <textarea name="message" placeholder="Tell us about your situation — the more context the better…" required></textarea>
+          <button type="submit" class="form-submit">Send message →</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-logo">Metal<span>Jelly</span></div>
+        <div class="footer-links">
+          <a href="#services">Services</a>
+          <a href="#insights">Insights</a>
+          <a href="#newsletter">Newsletter</a>
+          <a href="mailto:hello@metaljelly.co.uk">Email us</a>
+        </div>
+        <div class="footer-copy">© 2026 Metal Jelly. All rights reserved.</div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
