@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Free White-Label Consultation — Metal Jelly</title>
+  <meta name="description" content="Book a free 30-minute white-label consultation with Metal Jelly. Have a client brief? We'll tell you honestly whether we're the right fit and what delivery would look like." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:       #0d0d0d;
+      --surface:  #161616;
+      --border:   #282828;
+      --muted:    #555;
+      --text:     #e8e8e8;
+      --subtext:  #999;
+      --accent:   #c8f542;
+      --accent2:  #7b6ff0;
+      --radius:   12px;
+      --max:      1080px;
+      --font-head: 'Space Grotesk', sans-serif;
+      --font-body: 'Inter', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: var(--font-body); font-size: 16px; line-height: 1.7; -webkit-font-smoothing: antialiased; }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+    .container { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
+    section { padding: 100px 0; }
+
+    /* NAV */
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 18px 40px; background: rgba(13,13,13,0.85); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+    .nav-logo { font-family: var(--font-head); font-size: 1.25rem; font-weight: 700; letter-spacing: -0.02em; }
+    .nav-logo span { color: var(--accent); }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a { font-size: 0.875rem; color: var(--subtext); transition: color 0.2s; }
+    .nav-links a:hover { color: var(--text); }
+    .nav-cta { background: var(--accent); color: #0d0d0d; font-weight: 600; font-size: 0.875rem; padding: 8px 20px; border-radius: 999px; transition: opacity 0.2s; }
+    .nav-cta:hover { opacity: 0.85; }
+
+    /* HERO */
+    #hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; padding-top: 80px; position: relative; overflow: hidden; }
+    #hero::before { content: ''; position: absolute; inset: 0; background-image: linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px); background-size: 60px 60px; opacity: 0.4; }
+    #hero::after { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 60% 50% at 50% 50%, rgba(200,245,66,0.07) 0%, transparent 70%); }
+    .hero-content { position: relative; z-index: 1; max-width: 760px; }
+    h1 { font-family: var(--font-head); font-size: clamp(2.8rem, 6vw, 5rem); font-weight: 700; line-height: 1.05; letter-spacing: -0.04em; margin-bottom: 28px; }
+    h1 em { font-style: normal; background: linear-gradient(135deg, var(--accent), var(--accent2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .hero-sub { font-size: 1.15rem; color: var(--subtext); max-width: 560px; margin: 0 auto 16px; line-height: 1.7; }
+    .hero-note { font-size: 0.875rem; color: var(--muted); margin-bottom: 44px; }
+    .btn-primary { background: var(--accent); color: #0d0d0d; font-weight: 600; font-size: 0.95rem; padding: 14px 28px; border-radius: 999px; transition: opacity 0.2s, transform 0.15s; display: inline-block; }
+    .btn-primary:hover { opacity: 0.85; transform: translateY(-1px); }
+    .btn-ghost { border: 1px solid var(--border); color: var(--text); font-size: 0.95rem; padding: 13px 28px; border-radius: 999px; transition: border-color 0.2s, transform 0.15s; display: inline-block; }
+    .btn-ghost:hover { border-color: var(--muted); transform: translateY(-1px); }
+
+    /* SECTION HEADERS */
+    .section-label { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; }
+    h2 { font-family: var(--font-head); font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 700; letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 20px; }
+    .section-intro { color: var(--subtext); font-size: 1.05rem; max-width: 540px; margin-bottom: 56px; }
+
+    /* WHAT WE LOOK AT */
+    #what { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .what-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .what-card { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 32px 28px; transition: border-color 0.2s, transform 0.2s; }
+    .what-card:hover { border-color: var(--muted); transform: translateY(-3px); }
+    .what-icon { font-size: 2rem; margin-bottom: 16px; display: block; }
+    .what-card h3 { font-family: var(--font-head); font-size: 1.05rem; font-weight: 600; margin-bottom: 10px; letter-spacing: -0.02em; }
+    .what-card p { color: var(--subtext); font-size: 0.875rem; line-height: 1.65; }
+
+    /* WHAT YOU GET */
+    #output { }
+    .output-card {
+      background: linear-gradient(135deg, rgba(200,245,66,0.06) 0%, rgba(123,111,240,0.06) 100%);
+      border: 1px solid rgba(200,245,66,0.25);
+      border-radius: 20px;
+      padding: 64px;
+    }
+    .output-card h2 { margin-bottom: 20px; }
+    .output-card p { color: var(--subtext); font-size: 1rem; line-height: 1.8; max-width: 680px; }
+    .output-card p + p { margin-top: 16px; }
+
+    /* WHO IT'S FOR */
+    #who { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .who-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .who-card { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 32px 28px; transition: border-color 0.2s; }
+    .who-card:hover { border-color: var(--muted); }
+    .who-card h3 { font-family: var(--font-head); font-size: 1.05rem; font-weight: 600; margin-bottom: 10px; letter-spacing: -0.02em; }
+    .who-card p { color: var(--subtext); font-size: 0.875rem; line-height: 1.65; }
+
+    /* FORM */
+    #request { }
+    .form-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+    .form-left h2 { margin-bottom: 16px; }
+    .form-left > p { color: var(--subtext); margin-bottom: 0; line-height: 1.7; }
+    form { display: flex; flex-direction: column; gap: 14px; }
+    input, textarea, select { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); color: var(--text); font-family: var(--font-body); font-size: 0.95rem; padding: 15px 18px; transition: border-color 0.2s; outline: none; width: 100%; }
+    input::placeholder, textarea::placeholder { color: var(--muted); }
+    input:focus, textarea:focus, select:focus { border-color: var(--accent); }
+    select option { background: var(--surface); }
+    textarea { resize: vertical; min-height: 120px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .form-submit { background: var(--accent); color: #0d0d0d; font-weight: 600; font-size: 0.95rem; padding: 16px 28px; border-radius: 999px; border: none; cursor: pointer; transition: opacity 0.2s; align-self: flex-start; margin-top: 4px; font-family: var(--font-body); }
+    .form-submit:hover { opacity: 0.85; }
+
+    /* REASSURANCE */
+    #reassurance { padding: 40px 0 80px; }
+    .reassurance-row { display: flex; gap: 1px; background: var(--border); border-radius: var(--radius); overflow: hidden; }
+    .reassurance-item { background: var(--surface); flex: 1; padding: 32px; text-align: center; }
+    .reassurance-item .stat { font-family: var(--font-head); font-size: 2rem; font-weight: 700; color: var(--accent); letter-spacing: -0.04em; line-height: 1; margin-bottom: 8px; }
+    .reassurance-item p { color: var(--subtext); font-size: 0.875rem; }
+
+    /* FOOTER */
+    footer { border-top: 1px solid var(--border); padding: 40px 0; }
+    .footer-inner { display: flex; align-items: center; justify-content: space-between; }
+    .footer-logo { font-family: var(--font-head); font-size: 1.1rem; font-weight: 700; }
+    .footer-logo span { color: var(--accent); }
+    .footer-links { display: flex; gap: 24px; }
+    .footer-links a { font-size: 0.85rem; color: var(--muted); transition: color 0.2s; }
+    .footer-links a:hover { color: var(--subtext); }
+    .footer-copy { color: var(--muted); font-size: 0.85rem; }
+
+    /* RESPONSIVE */
+    @media (max-width: 960px) {
+      nav { padding: 16px 24px; }
+      .nav-links { display: none; }
+      .what-grid, .who-grid { grid-template-columns: 1fr; }
+      .form-wrap { grid-template-columns: 1fr; gap: 48px; }
+      .output-card { padding: 40px; }
+      .reassurance-row { flex-direction: column; }
+    }
+    @media (max-width: 600px) {
+      section { padding: 72px 0; }
+      .form-row { grid-template-columns: 1fr; }
+      .footer-inner { flex-direction: column; gap: 20px; text-align: center; }
+      .footer-links { justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="nav-logo">Metal<span>Jelly</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#services">Services</a></li>
+      <li><a href="index.html#insights">Insights</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+    <a href="for-agencies.html" class="nav-cta">For agencies →</a>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="container">
+      <div class="hero-content">
+        <p class="section-label">Free offer</p>
+        <h1>Free white-label<br /><em>consultation.</em></h1>
+        <p class="hero-sub">
+          Have a client brief you're not sure how to deliver? We'll spend 30 minutes exploring whether there's a fit — and give you a straight answer on what's possible, what it would cost, and how quickly we can turn it around.
+        </p>
+        <p class="hero-note">30 minutes. No obligation. We'll tell you straight if we're not the right fit.</p>
+        <a href="#request" class="btn-primary">Book your free consultation →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT WE LOOK AT -->
+  <section id="what">
+    <div class="container">
+      <p class="section-label">What we cover</p>
+      <h2>A real conversation, not a sales call.</h2>
+      <p class="section-intro">In 30 minutes, we'll give you a clear picture of whether and how we can help with your specific client brief.</p>
+      <div class="what-grid">
+
+        <div class="what-card">
+          <span class="what-icon">📋</span>
+          <h3>Brief assessment</h3>
+          <p>We'll go through the client brief with you — what they need, what they're on, and what success looks like. We'll tell you honestly if it's a good fit for us.</p>
+        </div>
+
+        <div class="what-card">
+          <span class="what-icon">⚙️</span>
+          <h3>Scope &amp; approach</h3>
+          <p>We'll outline how we'd approach the work — the phases, the deliverables, and what we'd need from you and the client to get started quickly.</p>
+        </div>
+
+        <div class="what-card">
+          <span class="what-icon">⚡</span>
+          <h3>Turnaround &amp; timeline</h3>
+          <p>We'll give you a realistic timeline based on our current capacity and the scope of the brief — including how our AI-assisted workflow affects speed.</p>
+        </div>
+
+        <div class="what-card">
+          <span class="what-icon">💰</span>
+          <h3>Indicative pricing</h3>
+          <p>You'll leave with a ballpark figure you can use to build your proposal. We won't make you wait a week for a quote to find out we're wildly out of budget.</p>
+        </div>
+
+        <div class="what-card">
+          <span class="what-icon">🔒</span>
+          <h3>How white-label works</h3>
+          <p>We'll explain exactly how we operate under your brand — what your client sees, what they don't, and how we keep your relationship protected throughout.</p>
+        </div>
+
+        <div class="what-card">
+          <span class="what-icon">🤝</span>
+          <h3>Next steps (if there's a fit)</h3>
+          <p>If there's a clear fit, we'll agree what happens next — no long onboarding, no contracts you need a lawyer for. Just a clear path to getting started.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT YOU GET -->
+  <section id="output">
+    <div class="container">
+      <div class="output-card">
+        <p class="section-label">After the call</p>
+        <h2>A clear answer, not a follow-up sequence.</h2>
+        <p>By the end of the 30 minutes, you'll know whether we're the right fit for this brief. If we are, you'll have enough to build your proposal to the client — scope, timeline, and ballpark pricing included.</p>
+        <p>There's no catch. We won't chase you with a sales sequence or pressure you to commit. If it's a fit, great — we'll move fast. If it isn't, we'll tell you that too and you're no worse off for the conversation.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHO IT'S FOR -->
+  <section id="who">
+    <div class="container">
+      <p class="section-label">Is this for you?</p>
+      <h2>This works well if...</h2>
+      <div class="who-grid">
+
+        <div class="who-card">
+          <h3>You've won a brief you can't deliver in-house</h3>
+          <p>Your client needs email automation, a platform build, or a deliverability fix and your team doesn't have the specialist resource to do it well.</p>
+        </div>
+
+        <div class="who-card">
+          <h3>You need to know if it's viable before you pitch</h3>
+          <p>You want a realistic view of scope, timeline and cost before you commit to the client — so you're not promising something you can't deliver.</p>
+        </div>
+
+        <div class="who-card">
+          <h3>You've worked with white-label partners before and been burned</h3>
+          <p>You've tried outsourcing email work before and it went badly. You want to understand how we're different before you risk a client relationship on it.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FORM -->
+  <section id="request">
+    <div class="container">
+      <div class="form-wrap">
+        <div class="form-left">
+          <p class="section-label">Book your consultation</p>
+          <h2>Tell us about the client brief.</h2>
+          <p>The more context you give us, the more useful the conversation will be.</p>
+        </div>
+
+        <form name="consultation-request" method="POST" data-netlify="true">
+          <input type="hidden" name="form-name" value="consultation-request" />
+          <div class="form-row">
+            <input type="text" name="name" placeholder="Your name" required />
+            <input type="text" name="agency" placeholder="Agency name" required />
+          </div>
+          <input type="email" name="email" placeholder="Your email" required />
+          <input type="text" name="esp" placeholder="What ESP or platform is the client on?" />
+          <select name="service">
+            <option value="" disabled selected>What does the client need?</option>
+            <option>Email strategy &amp; campaign programme</option>
+            <option>Marketing automation &amp; nurture flows</option>
+            <option>Deliverability fix</option>
+            <option>ESP evaluation or migration</option>
+            <option>Marketing operations &amp; tech stack</option>
+            <option>Ongoing email management (retainer)</option>
+            <option>Not sure yet</option>
+          </select>
+          <select name="timeline">
+            <option value="" disabled selected>How soon does the work need to start?</option>
+            <option>Immediately — it's urgent</option>
+            <option>Within the next 2–4 weeks</option>
+            <option>1–3 months</option>
+            <option>Just exploring for now</option>
+          </select>
+          <textarea name="brief" placeholder="Tell us about the client and the brief — what do they need and why can't your team deliver it in-house?" required></textarea>
+          <button type="submit" class="form-submit">Book my free consultation →</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- REASSURANCE -->
+  <section id="reassurance">
+    <div class="container">
+      <div class="reassurance-row">
+        <div class="reassurance-item">
+          <div class="stat">30 min</div>
+          <p>Your time commitment</p>
+        </div>
+        <div class="reassurance-item">
+          <div class="stat">48h</div>
+          <p>First draft turnaround if we proceed</p>
+        </div>
+        <div class="reassurance-item">
+          <div class="stat">No obligation</div>
+          <p>Ever — we'll tell you straight if it's not a fit</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <a href="index.html" class="footer-logo">Metal<span>Jelly</span></a>
+        <div class="footer-links">
+          <a href="index.html#services">Services</a>
+          <a href="index.html#insights">Insights</a>
+          <a href="index.html#newsletter">Newsletter</a>
+          <a href="mailto:hello@metaljelly.co.uk">Email us</a>
+        </div>
+        <div class="footer-copy">© 2026 Metal Jelly. All rights reserved.</div>
+      </div>
+    </div>
+  </footer>
+
+  <script>function initApollo(){var n=Math.random().toString(36).substring(7),o=document.createElement("script");
+  o.src="https://assets.apollo.io/micro/website-tracker/tracker.iife.js?nocache="+n,o.async=!0,o.defer=!0,
+  o.onload=function(){window.trackingFunctions.onLoad({appId:"69a0a3c10e625a001599ca53"})},
+  document.head.appendChild(o)}initApollo();</script>
+
+</body>
+</html>
